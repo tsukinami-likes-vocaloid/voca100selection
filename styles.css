@@ -1,0 +1,140 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+#main, #edit-screen {
+    margin: 20px;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+#video-input {
+    margin-top: 20px;
+}
+
+#video-url {
+    padding: 10px;
+    width: 80%;
+    margin-right: 10px;
+}
+
+#video-list-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 600px; /* コンテナの高さを固定 */
+}
+
+#left-container, #right-container {
+    width: 45%;
+    height: 100%;
+}
+
+.scrollable-container {
+    height: calc(100% - 40px); /* h2の高さを考慮 */
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.video-item {
+    margin-bottom: 10px;
+}
+
+.video-container {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.video-container:hover {
+    transform: translateY(-3px);
+}
+
+.video-container.dragging {
+    opacity: 0.5;
+}
+
+.video-container.over {
+    border: 2px dashed #aaa;
+}
+
+.thumbnail {
+    width: 100px;
+    height: 56.25px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.video-container p {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    align-self: flex-start;
+    margin-left: auto;
+}
+
+.number {
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.drag-after {
+    border-top: 2px dashed #000;
+    margin: 10px 0;
+}
+
+.video-item {
+    transition: opacity 0.2s;
+}
+
+#video-list, #drag-target {
+    min-height: 50px;
+    border: 1px dashed #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+#video-list:empty, #drag-target:empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #999;
+}
+
+#video-list:empty::before {
+    content: "左側のコンテナ領域";
+}
+
+#drag-target:empty::before {
+    content: "右側のコンテナ領域";
+}
