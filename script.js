@@ -76,6 +76,7 @@ document.getElementById('import-playlist').addEventListener('click', async funct
     }
 });
 
+// 動画を追加する関数を修正
 function addVideoToList(videoId, title) {
     addedVideos.add(videoId);
 
@@ -91,6 +92,7 @@ function addVideoToList(videoId, title) {
 
     const container = document.createElement('div');
     container.classList.add('video-item');
+    container.dataset.videoId = videoId;
 
     const videoContainer = document.createElement('div');
     videoContainer.classList.add('video-container');
@@ -119,11 +121,7 @@ function addVideoToList(videoId, title) {
     videoContainer.addEventListener('dragstart', dragStart);
     videoContainer.addEventListener('dragend', dragEnd);
 
-    if (videoCount < 100) {
-        document.getElementById('video-list').appendChild(container);
-    } else {
-        document.getElementById('drag-target').appendChild(container);
-    }
+    document.getElementById('video-list').appendChild(container);
 
     updateNumbers();
     videoCount++;
@@ -245,7 +243,6 @@ function removeDragAfterElement() {
     }
 }
 
-// ドラッグアンドドロップのためのイベントリスナーを追加
 ['video-list', 'drag-target'].forEach(id => {
     const container = document.getElementById(id);
     container.addEventListener('dragover', dragOver);
