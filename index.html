@@ -8,12 +8,13 @@
 </head>
 <body>
     <div id="main">
-        <button id="create-new">新規作成</button>
+        <button id="create-new">あたらしい５０選を作成</button>
+        <br>
         <input type="text" id="playlist-url" placeholder="YouTubeの再生リストURLを入力">
         <button id="import-playlist">再生リストからインポート</button>
     </div>
     <div id="edit-screen" class="hidden">
-        <button id="save-playlist">保存</button>
+        <button id="save-playlist">再生リストに出力</button>
         <div id="video-input" class="hidden">
             <input type="text" id="video-url" placeholder="YouTubeの動画URLを入力">
             <button id="submit-video">追加</button>
@@ -21,11 +22,11 @@
         <button id="add-video">動画を追加</button>
         <div id="video-list-container">
             <div id="left-container">
-                <h2>追加されたコンテンツ</h2>
+                <h2>内定済み楽曲</h2>
                 <div id="video-list" class="scrollable-container"></div>
             </div>
             <div id="right-container">
-                <h2>移動可能なコンテナ</h2>
+                <h2>仮置き場</h2>
                 <div id="drag-target" class="scrollable-container"></div>
             </div>
         </div>
