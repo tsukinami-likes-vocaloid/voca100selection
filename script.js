@@ -257,3 +257,43 @@ function extractVideoId(url) {
     const match = url.match(regExp);
     return match && match[1];
 }
+
+document.getElementById('save-playlist').addEventListener('click', function() {
+    const videoItems = document.querySelectorAll('#video-list .video-item');
+    const videoIds = Array.from(videoItems).map(item => item.dataset.videoId);
+    
+    if (videoIds.length > 0) {
+        const maxUrlLength = 2048; // 一般的なURLの最大長
+        const baseUrl = 'https://www.youtube.com/watch_videos?video_ids=';
+        let watchUrl = baseUrl;
+        
+        for (let i = 0; i < videoIds.length; i++) {
+            const newUrl = watchUrl + (i > 0 ? ',' : '') + videoIds[i];
+            if (newUrl.length > maxUrlLength) {
+                break; // URL長が制限を超えそうな場合、ここで終了
+            }
+            watchUrl = newUrl;
+        }
+
+        if (watchUrl === baseUrl) {
+            alert('URLが長すぎるため、プレイリストを作成できません。');
+        } else {
+            const includedCount = (watchUrl.match(/,/g) || []).length + 1;
+            if (includedCount < videoIds.length) {
+                alert(`URLの長さ制限により、${videoIds.length}個中${includedCount}個の動画のみがプレイリストに含まれます。`);
+            }
+            window.open(watchUrl, '_blank');
+        }
+    } else {
+        alert('プレイリストに動画がありません。');
+    }
+});
+
+// 配列を指定したサイズのチャンクに分割する関数
+function chunkArray(array, size) {
+    const chunks = [];
+    for (let i = 0; i < array.length; i += size) {
+        chunks.push(array.slice(i, i + size));
+    }
+    return chunks;
+}
