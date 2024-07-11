@@ -8,11 +8,8 @@ document.getElementById('create-new').addEventListener('click', function() {
     document.getElementById('edit-screen').classList.remove('hidden');
     document.getElementById('create-new').classList.add('hidden');
     document.getElementById('import-playlist').classList.add('hidden');
-    document.getElementById('add-video').classList.remove('hidden');
-});
-
-document.getElementById('add-video').addEventListener('click', function() {
-    document.getElementById('video-input').classList.toggle('hidden');
+    document.getElementById('video-input').classList.remove('hidden');
+    document.getElementById('video-input').style.display = 'block';
 });
 
 document.getElementById('submit-video').addEventListener('click', function() {
@@ -48,7 +45,8 @@ document.getElementById('import-playlist').addEventListener('click', async funct
         document.getElementById('edit-screen').classList.remove('hidden');
         document.getElementById('create-new').classList.add('hidden');
         document.getElementById('import-playlist').classList.add('hidden');
-        document.getElementById('add-video').classList.remove('hidden');
+        document.getElementById('video-input').classList.remove('hidden');
+    document.getElementById('video-input').style.display = 'block';
 
         try {
             let nextPageToken = '';
